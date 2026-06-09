@@ -1,0 +1,152 @@
+INSERT INTO categories (created_at, updated_at, name, description)
+VALUES
+    (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Breakfast', 'Recipes suitable for breakfast and morning meals.'),
+    (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Lunch', 'Recipes suitable for lunch and everyday meals.'),
+    (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Dinner', 'Recipes suitable for dinner and evening meals.'),
+    (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Dessert', 'Sweet recipes and desserts.'),
+    (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Snack', 'Quick and simple snack recipes.');
+
+INSERT INTO recipes (
+    created_at,
+    updated_at,
+    name,
+    description,
+    category_id,
+    preparation_time,
+    difficulty,
+    servings,
+    ingredients,
+    instructions,
+    image_url
+)
+VALUES
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Oatmeal with Banana and Honey',
+                'A simple and healthy breakfast recipe with oats, banana, and honey.',
+                1,
+                10,
+                'EASY',
+                2,
+                'Rolled oats, milk, banana, honey, cinnamon.',
+                'Cook the oats with milk for several minutes. Add sliced banana, honey, and cinnamon before serving.',
+                'https://images.unsplash.com/photo-1517673132405-a56a62b18caf'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Scrambled Eggs with Toast',
+                'A quick breakfast recipe with eggs, toast, and fresh vegetables.',
+                1,
+                15,
+                'EASY',
+                2,
+                'Eggs, bread, butter, tomato, cucumber, salt, black pepper.',
+                'Whisk the eggs with salt and pepper. Cook them in a pan with butter and serve with toasted bread and fresh vegetables.',
+                'https://images.unsplash.com/photo-1525351484163-7529414344d8'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Chicken Rice Bowl',
+                'A balanced lunch recipe with chicken, rice, and vegetables.',
+                2,
+                35,
+                'MEDIUM',
+                3,
+                'Chicken breast, rice, carrots, peas, olive oil, salt, black pepper.',
+                'Cook the rice separately. Grill the chicken and prepare the vegetables. Combine everything in a bowl and serve warm.',
+                'https://images.unsplash.com/photo-1546069901-ba9599a7e63c'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Greek Salad with Chickpeas',
+                'A fresh lunch recipe with vegetables, chickpeas, and feta cheese.',
+                2,
+                20,
+                'EASY',
+                2,
+                'Cucumber, tomato, red onion, chickpeas, feta cheese, olives, olive oil, lemon juice.',
+                'Chop the vegetables and mix them with chickpeas, olives, and feta cheese. Add olive oil and lemon juice before serving.',
+                'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Pasta with Tomato Sauce',
+                'A classic dinner recipe with pasta and homemade tomato sauce.',
+                3,
+                30,
+                'EASY',
+                4,
+                'Pasta, tomato sauce, garlic, olive oil, basil, parmesan cheese.',
+                'Boil the pasta according to the package instructions. Prepare the tomato sauce with garlic and basil. Mix the pasta with the sauce and serve with parmesan.',
+                'https://images.unsplash.com/photo-1551183053-bf91a1d81141'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Baked Salmon with Vegetables',
+                'A nutritious dinner recipe with salmon, potatoes, and seasonal vegetables.',
+                3,
+                45,
+                'MEDIUM',
+                2,
+                'Salmon fillets, potatoes, broccoli, carrots, olive oil, lemon juice, garlic, salt, black pepper.',
+                'Season the salmon and vegetables with olive oil, lemon juice, garlic, salt, and pepper. Bake everything until the salmon is cooked and the vegetables are soft.',
+                'https://images.unsplash.com/photo-1467003909585-2f8a72700288'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Chocolate Mug Cake',
+                'A quick dessert recipe prepared in a mug using a microwave.',
+                4,
+                8,
+                'EASY',
+                1,
+                'Flour, cocoa powder, sugar, milk, oil, baking powder, chocolate chips.',
+                'Mix all ingredients in a mug. Microwave for about one minute until the cake rises and becomes firm.',
+                'https://images.unsplash.com/photo-1606313564200-e75d5e30476c'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Fruit Yogurt Parfait',
+                'A light dessert recipe with yogurt, fruit, honey, and granola.',
+                4,
+                10,
+                'EASY',
+                2,
+                'Greek yogurt, strawberries, blueberries, banana, honey, granola.',
+                'Add yogurt to a glass, then add sliced fruit, honey, and granola in layers. Serve immediately while fresh.',
+                'https://images.unsplash.com/photo-1488477181946-6428a0291777'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Vegetable Sandwich',
+                'A quick snack recipe with fresh vegetables and cheese.',
+                5,
+                12,
+                'EASY',
+                2,
+                'Bread, cheese, lettuce, tomato, cucumber, mayonnaise.',
+                'Spread mayonnaise on the bread. Add cheese and sliced vegetables. Close the sandwich and serve immediately.',
+                'https://images.unsplash.com/photo-1528735602780-2552fd46c7af'
+    ),
+    (
+                CURRENT_TIMESTAMP,
+                CURRENT_TIMESTAMP,
+                'Hummus with Vegetable Sticks',
+                'A simple snack recipe with hummus and fresh sliced vegetables.',
+                5,
+                10,
+                'EASY',
+                2,
+                'Hummus, carrots, cucumber, bell pepper, celery sticks, olive oil.',
+                'Slice the vegetables into sticks. Place hummus in a small bowl, drizzle with olive oil, and serve with the vegetables.',
+                'https://images.unsplash.com/photo-1541014741259-de529411b96a'
+    );
