@@ -1,0 +1,43 @@
+.recipe-details-loading {
+    display: flex;
+    justify-content: center;
+    padding: 48px;
+}
+
+.recipe-details-page {
+    overflow: hidden;
+    border-radius: 22px;
+}
+
+.recipe-details-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.recipe-details-image-placeholder {
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeeee;
+}
+
+.recipe-details-content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.recipe-details-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.recipe-details-text {
+    white-space: pre-line;
+    line-height: 1.8;
+}
