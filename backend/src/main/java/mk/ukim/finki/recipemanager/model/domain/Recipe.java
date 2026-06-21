@@ -13,56 +13,59 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import mk.ukim.finki.recipemanager.model.enumerations.RecipeDifficulty;
 
+@Entity
+@Table(name = "recipes")
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "recipes")
 public class Recipe extends BaseAuditableEntity {
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(nullable = false, length = 2000)
-    private String ingredients;
+    @Column(nullable = false, length = 500)
+    private String description;
 
-    @Column(nullable = false, length = 5000)
-    private String instructions;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
-    @Column(nullable = false)
+    @Column(name = "preparation_time", nullable = false)
     private Integer preparationTime;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RecipeDifficulty difficulty;
 
     @Column(nullable = false)
     private Integer servings;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private RecipeDifficulty difficulty;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String ingredients;
 
-    @Column(length = 500)
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String instructions;
+
+    @Column(name = "image_url", length = 2048)
     private String imageUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
-
-    public Recipe(
-            String name,
-            String ingredients,
-            String instructions,
-            Integer preparationTime,
-            Integer servings,
-            RecipeDifficulty difficulty,
-            String imageUrl,
-            Category category
-    ) {
+    public Recipe(String name,
+                  String description,
+                  Category category,
+                  Integer preparationTime,
+                  RecipeDifficulty difficulty,
+                  Integer servings,
+                  String ingredients,
+                  String instructions,
+                  String imageUrl) {
         this.name = name;
+        this.description = description;
+        this.category = category;
+        this.preparationTime = preparationTime;
+        this.difficulty = difficulty;
+        this.servings = servings;
         this.ingredients = ingredients;
         this.instructions = instructions;
-        this.preparationTime = preparationTime;
-        this.servings = servings;
-        this.difficulty = difficulty;
         this.imageUrl = imageUrl;
-        this.category = category;
     }
 }

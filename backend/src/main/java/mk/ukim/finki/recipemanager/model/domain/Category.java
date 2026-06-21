@@ -7,17 +7,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "categories")
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "categories")
 public class Category extends BaseAuditableEntity {
 
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
-    @Column(length = 500)
+    @Column(nullable = false, length = 500)
     private String description;
 
     public Category(String name, String description) {
