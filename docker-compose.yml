@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: recipe-manager-postgres
+    environment:
+      POSTGRES_DB: recipe_manager
+      POSTGRES_USER: recipe_manager_user
+      POSTGRES_PASSWORD: recipe_manager_password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U recipe_manager_user -d recipe_manager"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - recipe-manager-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: recipe-manager-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/recipe_manager
+      SPRING_DATASOURCE_USERNAME: recipe_manager_user
+      SPRING_DATASOURCE_PASSWORD: recipe_manager_password
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - recipe-manager-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_BASE_API_URL: http://localhost:8080/api
+    container_name: recipe-manager-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - recipe-manager-network
+
+volumes:
+  postgres-data:
+
+networks:
+  recipe-manager-network:
+    driver: bridge
