@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: recipe-manager-ingress
+  namespace: recipe-manager
+  labels:
+    app.kubernetes.io/name: recipe-manager-ingress
+    app.kubernetes.io/component: ingress
+    app.kubernetes.io/part-of: recipe-manager-app
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: recipe-manager.local
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: recipe-manager-backend
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: recipe-manager-frontend
+                port:
+                  number: 80
